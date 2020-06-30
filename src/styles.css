@@ -1,0 +1,388 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'MuseoModerno', cursive;
+  font-weight: 200;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  background-color: #00283D;
+  color: white;
+}
+
+
+
+p {
+  font-family: 'MuseoModerno', cursive;
+}
+
+/* Header Nav */
+
+.header .main-title {
+  font-family: 'MuseoModerno', cursive;
+  font-weight:200;
+  }
+
+.header-links {
+  padding-top: 12px;
+}
+
+
+.nav-color {
+  background-color: black;
+}
+
+/* First Section -------------------------------------------------------- */
+
+
+.title-area {
+  margin-top: 70px;
+  display: grid;
+  place-items: center;
+  background-color: #00283D;
+}
+
+.align .container-fluid {
+  display: grid;
+  padding-left: 0px;
+}
+
+#nopad {
+padding-left:0px;
+padding-right: 0px;
+}
+
+.main-content {
+  background-color:rgba(0, 0, 0, 0.7);
+  height: 600px;
+  clip-path: polygon(0 0, 40% 0px, 50% 100%, 0px 100%);
+  text-align: left;
+  transition: 1.2s;
+  display:grid;
+  grid-template-columns: 1fr .1fr 3.5fr;
+  place-items: center;
+  font-family: 'MuseoModerno', cursive;
+}
+
+.main-content:hover {
+  clip-path: polygon(0 0, 90% 0px, 100% 100%, 0px 100%);
+  }
+
+
+.one, .three {
+  height: 70%;
+}
+
+.one {
+  margin-left: 30px;
+}
+
+.three {
+  margin-top: 50px;
+}
+
+.title-menu h2 {
+  font-size: 3rem;
+  transition: .2s;
+  padding-bottom: 25px;
+}
+
+.title-menu p {
+  padding-left: 7px;
+  font-weight:200;
+
+}
+
+.title-menu h2:hover {
+  opacity: 70%;
+}
+
+.title-menu p {
+  font-size: 10px;
+ 
+  font-style: italic;
+}
+
+.title-menu-item {
+  cursor: pointer;
+}
+
+
+.title-area .icon {
+  width: 300px;
+}
+
+.service-info {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.main-image {
+  position: absolute;
+  clip-path: polygon(0 0, 100% 0, 100% 600px, 0 600px);
+}
+
+.service {
+  transition: .55s;
+  text-align: center;
+ 
+}
+
+.service p{
+font-size: 1.5rem;
+ 
+}
+
+
+@media screen and (max-width: 1000px) {
+  .main-content {
+    transition: 0s;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    text-align: center;
+    height: 600px;
+    place-items: center;
+  }
+
+  .main-content:hover {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .title-menu h2 {
+      font-size: 2rem;
+      transition: .2s;
+      padding-bottom: 10px;
+    }
+
+
+    .one {
+      margin-left: 0px;
+    }
+
+    .three {
+      margin-top: 0px;
+    }
+    
+
+    .title-area .icon {
+      width: 20%;
+    }
+
+    .service p{
+      font-size: .8rem;
+       
+      }
+
+      .main-image {
+        position: absolute;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        width: 100%;
+        height: 600px
+  
+      }
+
+      .main-content {
+        background-color:rgba(0, 0, 0, 0.7);
+        height: 600px;
+      }
+  
+}
+
+@media screen and (max-width: 800px) {
+
+  .title-area {
+    background-color: black;
+  }
+  .main-image {
+    position: absolute;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    width: 100%;
+    height: 600px;
+  
+
+  }
+
+  .title-menu h2 {
+    font-size: 2rem;
+    
+  }
+
+
+  .main-content {
+    background-color:rgba(0, 0, 0, 0.8);
+    position: relative;
+    height:600px;
+  }
+}
+
+/* GEAR -------------------------------------------------------- */
+
+
+
+.gear-icon {
+  width: 60%;
+ margin-top: 24px;
+  
+}
+
+.icon-div {
+  display: inline-block;
+  border-radius: 50%;
+  border-style: solid;
+  width: 125px;
+  height: 125px;
+  align-items: center;
+}
+
+
+.gear-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: 1fr;
+  grid-gap: 20px;
+  place-items: center;
+  position: relative;
+  padding-top: 35px;
+}
+
+
+.gear {
+  transition: opacity 2s;
+  padding: 40px;
+  height: 100%;
+ 
+}
+
+.gear h3 {
+padding-top: 20px;
+}
+
+
+
+.zoom {
+  transition: transform .2s; /* Animation */
+  width: 80%;
+
+}
+
+.zoom:hover {
+  transform: scale(1.02); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+
+/* About ------------------ */
+
+.about {
+  background-color: black;
+  transition: 2s;
+  padding: 0px;
+  display: grid;
+  place-items: center;
+}
+
+.about .text {
+width: 80%;
+  display: grid;
+  place-items: center;
+}
+
+.about h2 {
+  padding: 10px;
+}
+
+.hidden {
+  opacity: 0%;
+  transition: 2s;
+}
+
+.show {
+  transition: 2s;
+  opacity: 100%
+}
+
+.show .about {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+/* --------------- CLIENT LIST ------------------*/
+
+.client-list {
+  padding-top: 50px;
+transition: .5s;
+}
+
+
+
+.clients h2 {
+  font-size: 4.5rem;
+  padding: 40px;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  border-bottom-style: solid;
+  border-width: 1px;
+}
+
+.client-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: 1fr;
+  gap: 15px;
+  place-items: center;
+  position: relative;
+
+}
+
+.client-card {
+  background-color: black;
+  border-radius: 5%;
+  padding: 5px;
+}
+
+.client-card h4 {
+  font-size: 1.5rem;
+}
+.client-card h5 {
+  font-size: 1rem;
+}
+
+.player {
+border-radius: 3%;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+.client-info {
+  text-align: left;
+}
+
+.expand-btn:hover {
+  transition: .2s;
+  opacity: 50%;
+}
+
+.clients button {
+width: 100%;
+text-align: center;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-rows: 1fr;
+  grid-gap: 60px;
+  align-items: center;
+  margin: auto;
+  position: relative;
+}
+
+/* ---------- Contact ---------- */
+
+.contact {
+  background-color: black;
+}
