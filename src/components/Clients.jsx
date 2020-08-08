@@ -1,89 +1,110 @@
-import React, {useState} from 'react';
-import Client from './Client';
-import clientList from './clientList';
-
-
+import React, { useState, useEffect } from "react";
+import Client from "./Client";
+import ScrollFade from "./ScrollFade";
+import { db } from "../firebase/firebaseConfig";
+import ClientDropdown from "./ClientDropdown";
+import ClientServiceSelect from "./ClientServiceSelect";
 
 const Clients = () => {
+  const [clientDisplay, setClientDisplay] = useState("All");
+  const [opacity, setOpacity] = useState({ opacity: "100%" });
+  const [clients, setClients] = useState([]);
 
-    const [clientDisplay, setClientDisplay] = useState("all")
-    const [opacity, setOpacity] = useState({opacity: "100%"})
+  // get client list data from firebase realtime db (not GET tho becuase it's not a REST API)
+  useEffect(() => {
+    db.ref("clients").on("value", (snapshot) => {
+      let allClients = [];
 
-    const handleChange = (serviceType) => {
-        transition(serviceType)
-        
+      snapshot.forEach((snap) => {
+        allClients.push(snap.val());
+      });
+      setClients(allClients);
+    });
+  }, []);
+
+  // next functions handle the fading transition between selected services
+  const handleChange = (serviceType) => {
+    transition(serviceType);
+  };
+
+  const transition = (type) => {
+    if (clientDisplay !== type) {
+      setOpacity({ opacity: "0%" });
+      setTimeout(() => {
+        setOpacity({ opacity: "100%" });
+        setClientDisplay(type);
+      }, 500);
     }
+  };
 
-    const transition = (type) => {
-        if (clientDisplay !== type) {
-            setOpacity({ opacity: "0%" })
-            setTimeout(() => {
-                setOpacity({ opacity: "100%" })
-                setClientDisplay(type)
-            }, 500)
-        }
+  // logic for which clients are displayed based on service selected, default "all"
+  const switchClients = (list) => {
+    const type = () => {
+      switch (clientDisplay) {
+        case "Mixing":
+          return list.credits.mixing;
+        case "Mastering":
+          return list.credits.mastering;
+        case "Engineering":
+          return list.credits.engineering;
+        case "Production":
+          return list.credits.production;
+        default:
+          return list.credits;
+      }
     };
 
-    const switchClients = (list) => {
-        const type = () => {
-            switch (clientDisplay) {
-                case "mixing":
-                    return list.credits.mixing;
-                case "mastering":
-                    return list.credits.mastering;
-                case "engineering":
-                    return list.credits.engineering;
-                case "production":
-                    return list.credits.production;
-                default:
-                    return list.credits;
+    if (type()) {
+      return (
+        <Client
+          name={list.name}
+          track={list.track}
+          trackPic={list.trackPic}
+          credit={list.credit}
+          writeup={list.writeup}
+          spotify={list.spotify}
+          key={list.id}
+          year={list.year}
+          credits={list.credits}
+        />
+      );
+    }
+  };
+
+  return (
+    <div className='clients'>
+      <div
+        className='client-background'
+        style={{
+          backgroundImage: "url(" + require("../images/tim-header.jpeg") + ")",
+        }}
+      >
+        <div className='darkened'>
+          <ScrollFade
+            content={
+              <div>
+                <h2>Clients</h2>
+                <ClientDropdown
+                  clientDisplay={clientDisplay}
+                  handleChange={handleChange}
+                />
+                <hr></hr>
+                <ClientServiceSelect handleChange={handleChange} />
+                <div
+                  className='client-wrapper client-list container'
+                  style={opacity}
+                >
+                  {clients.map(switchClients)}
+                </div>
+
+                <div className='spacer'></div>
+              </div>
             }
-        }
-
-        if (type()) {
-                
-            return <Client
-                name={list.name}
-                track={list.track}
-                trackPic={list.trackPic}
-                credit={list.credit}
-                writeup={list.writeup}
-                spotify={list.spotify}
-                key={list.id}
-                year={list.year}
-                credits={list.credits}
-            />
-        
-        }
-    };
-
-// I could make a function at returns a button with the input for text and input for handle change     
-    return <div className="clients">
-        <div className="">
-            <h2 className="">Clients</h2> 
-            <div className="button-grid container"> 
-                <button className="btn btn-outline-light" onClick={() => handleChange("all")}>All</button>
-                <button className="btn btn-outline-light" onClick={() => handleChange("production")}>Production</button>
-                <button className="btn btn-outline-light" onClick={() => handleChange("engineering")}>Engineering</button>
-                <button className="btn btn-outline-light" onClick={() => handleChange("mixing")}>Mixing</button>
-            <button className="btn btn-outline-light" onClick={() => handleChange("mastering")}>Mastering</button>
-            
-           
-            </div>
-
-            <div className="client-wrapper client-list container" style={opacity}>
-                 {clientList.map(switchClients)}
-            </div>
-            
-
-      
-            <hr></hr>
-
-        
-
+          />
         </div>
+      </div>
     </div>
+  );
 };
 
-
-export default Clients
+export default Clients;

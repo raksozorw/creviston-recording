@@ -1,35 +1,35 @@
-import React from 'react'
-
+import React from "react";
+import ContactForm from "../contact";
 
 const Contact = () => {
-
-  
-  
-    return <div className="contact">
-        <div>
-            <div className="container wrapper">
-                <div>
-        <h2>Contact</h2>
-            <p>Contact us for rates and availability.</p>
-            <p>Please send us an email detailing what you're looking for from our studio. If you've got demos, include those too.</p>
-            
-                    <div className="text">
-                    <p>tim.creviston@gmail.com</p>
-                    <p>340 Brooksbank Avenue</p>
-                    <p>North Vancouver, BC</p>
-                    <p>V7J 2C1</p>
-              
-          
-
-
-                    </div>
-                </div>
-                <div>maps api</div>
-            </div>
-
+  return (
+    <>
+      <h1 className='contacth1'>Contact</h1>
+      <div className='contact'>
+        <div className='contact-item'>
+          <div className='contact-description'>
+            <h5>Contact for rates and availability.</h5>
+            <p>
+              Please send me a message detailing what you're looking for.{" "}
+              <br></br>For demos, please attach them in an email to:{" "}
+              <a className='email' href='mailto:tim.creviston@gmail.com'>
+                tim.creviston@gmail.com
+              </a>
+            </p>
+          </div>
+        </div>
+        <div className='contact-item'>
+          <ContactForm />
+        </div>
       </div>
-<p>Icons made by Darius Dan from www.flaticon.com</p>
-    </div>
+      <hr></hr>
+      <p>Designed and created by Oskar Wroz</p>
+      <p>© Copyright 2020</p>
+      <p className='icon-attribution'>
+        Icons made by Darius Dan from www.flaticon.com
+      </p>
+    </>
+  );
 };
 
 export default Contact;
