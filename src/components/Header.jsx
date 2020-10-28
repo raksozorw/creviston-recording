@@ -20,14 +20,14 @@ const Header = () => {
         <Navbar.Collapse id='basic-navbar-nav'>
           <div className='order-3'>
             <Nav className='mr-auto order-3'>
-              <Nav.Link className='header-links' href='#section-1'>
+              <Nav.Link className='header-links' href='#about'>
                 <h4>about</h4>
               </Nav.Link>
-              <Nav.Link className='header-links' href='#section-3'>
+              <Nav.Link className='header-links' href='#clients'>
                 {" "}
                 <h4>clients</h4>{" "}
               </Nav.Link>
-              <Nav.Link className='header-links' href='#section-4'>
+              <Nav.Link className='header-links' href='#contact'>
                 <h4>contact</h4>
               </Nav.Link>
             </Nav>

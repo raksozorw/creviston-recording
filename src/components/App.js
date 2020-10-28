@@ -17,11 +17,11 @@ function App() {
       <Home />
       <Equipment />
       <Divider />
-      <section id='section-1'></section>
+      <section id='about'></section>
       <About />
-      <section id='section-3'></section>
+      <section id='clients'></section>
       <Clients />
-      <section id='section-4'></section>
+      <section id='contact'></section>
       <Contact />
 
       <hr></hr>

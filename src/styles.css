@@ -364,9 +364,24 @@ p {
   ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
+@media screen and (min-width: 1700px) {
+  p {
+    font-size: 1.2rem;
+  }
+
+  p .service-info {
+    font-size: 1.8rem;
+  }
+}
+
 @media screen and (min-width: 2200px) {
   .equipment {
     width: 70%;
+  }
+
+  .service p {
+    font-size: 1rem;
+    padding: 20px;
   }
 }
 
@@ -440,11 +455,11 @@ p {
   }
 
   .tim-photo {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     border-style: solid;
     border-width: 1px;
-    width: 50%;
+    width: 80%;
     max-width: 600px;
   }
 
